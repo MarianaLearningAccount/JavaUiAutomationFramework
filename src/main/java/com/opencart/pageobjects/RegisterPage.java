@@ -1,13 +1,14 @@
 package com.opencart.pageobjects;
 
 import com.opencart.managers.DataFakerManager;
+import com.opencart.managers.DriverManager;
 import com.opencart.managers.ScrollManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class RegisterPage extends Page{
-    public RegisterPage(WebDriver driver){
+public class RegisterPage extends Page {
+    public RegisterPage(WebDriver driver) {
         super(driver);
     }
 
@@ -29,7 +30,7 @@ public class RegisterPage extends Page{
     @FindBy(xpath = "//button[normalize-space()='Continue']")
     private WebElement continueBtn;
 
-    public void fillInTheRegisterForm(String firstName, String lastName, String email, String password){
+    public void fillInTheRegisterForm(String firstName, String lastName, String email, String password) {
         firstNameInput.sendKeys(firstName);
         System.out.println("The entered first name is: " + firstName);
 
@@ -48,7 +49,8 @@ public class RegisterPage extends Page{
         privacyToggle.click();
     }
 
-    public void clickOnContinueButton(){
+    public void clickOnContinueButton() throws InterruptedException {
+        ScrollManager.scrollToElement(DriverManager.getInstance().getDriver(), continueBtn);
         continueBtn.click();
     }
 }

@@ -1,4 +1,4 @@
-package com.opencart.stepdefinitions;
+package com.opencart;
 
 import com.opencart.managers.DataFakerManager;
 import com.opencart.managers.DriverManager;
@@ -35,7 +35,6 @@ public class RegistrationFlowTestSuite {
         String randomEmail = DataFakerManager.getRandomEmail();
         String password = DataFakerManager.getRandomPassword(4, 20);
 
-        RegisterPage registerPage = new RegisterPage(driver);
         registerPage.fillInTheRegisterForm(firstName, lastName, randomEmail, password);
         registerPage.switchOnThePrivacyToggle(driver);
         registerPage.clickOnContinueButton();
